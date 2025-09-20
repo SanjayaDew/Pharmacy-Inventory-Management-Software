@@ -20,6 +20,7 @@ namespace pharmacy
 
         SqlConnection con = new SqlConnection("Data Source=localhost;Initial Catalog=Pharmacy;Integrated Security=True;TrustServerCertificate=True");
         SqlCommand cmd;
+        SqlCommand cmd1;
         SqlDataAdapter dt;
         SqlDataReader read;
 
@@ -91,6 +92,60 @@ namespace pharmacy
 
                 txttotal.Text = sum.ToString();
             }
+        }
+
+        public void SalesSave()
+        {
+            String total = txttotal.Text;
+            String pay = txtpay.Text;
+            String bal = txtbal.Text;
+
+            String sql1;
+            String sql2;
+
+            sql1 = "Insert into sales(subtotal,pay,balance) values ( @subtotal, @pay, @balance) select @@identity;";
+
+            con.Open();
+            cmd = new SqlCommand(sql1, con);
+            cmd.Parameters.AddWithValue("@subtotal", total);
+            cmd.Parameters.AddWithValue("@pay", pay);
+            cmd.Parameters.AddWithValue("@balance", bal);
+            int lastid = int.Parse(cmd.ExecuteScalar().ToString());
+
+            string dname;
+            int price = 0 ;
+            int qty = 0 ;
+            int tot = 0;
+
+            for (int row = 0; row < dataGridView1.Rows.Count; row++)
+            {
+                dname = dataGridView1.Rows[row].Cells[1].Value.ToString();
+                price = int.Parse(dataGridView1.Rows[row].Cells[2].Value.ToString());
+                qty = int.Parse(dataGridView1.Rows[row].Cells[3].Value.ToString());
+                tot = int.Parse(dataGridView1.Rows[row].Cells[4].Value.ToString());
+
+                sql2 = "insert into sales_product (sales_id , drugname, price, qty, total)values (@sales_id, @drugname, @price, @qty, @total)";
+                cmd1 = new SqlCommand(sql2, con);
+                cmd1.Parameters.AddWithValue("@sales_id", lastid);
+                cmd1.Parameters.AddWithValue("@drugname", dname);
+                cmd1.Parameters.AddWithValue("@price", price);
+                cmd1.Parameters.AddWithValue("@qty", qty);
+                cmd1.Parameters.AddWithValue("@total", tot);
+                cmd1.ExecuteNonQuery();
+            }
+            MessageBox.Show("Sales Completed !");
+            con.Close();
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            double total = double.Parse(txttotal.Text);
+            double pay = double.Parse(txtpay.Text);
+            double bal = pay - total;
+            txtbal.Text = bal.ToString();
+
+            SalesSave();
         }
     }
 }
