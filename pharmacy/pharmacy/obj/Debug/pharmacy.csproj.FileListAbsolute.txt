@@ -1,0 +1,10 @@
+C:\Users\sanja\OneDrive\Desktop\pharmacy\pharmacy\bin\Debug\pharmacy.exe.config
+C:\Users\sanja\OneDrive\Desktop\pharmacy\pharmacy\bin\Debug\pharmacy.exe
+C:\Users\sanja\OneDrive\Desktop\pharmacy\pharmacy\bin\Debug\pharmacy.pdb
+C:\Users\sanja\OneDrive\Desktop\pharmacy\pharmacy\obj\Debug\pharmacy.csproj.AssemblyReference.cache
+C:\Users\sanja\OneDrive\Desktop\pharmacy\pharmacy\obj\Debug\pharmacy.Form1.resources
+C:\Users\sanja\OneDrive\Desktop\pharmacy\pharmacy\obj\Debug\pharmacy.Properties.Resources.resources
+C:\Users\sanja\OneDrive\Desktop\pharmacy\pharmacy\obj\Debug\pharmacy.csproj.GenerateResource.cache
+C:\Users\sanja\OneDrive\Desktop\pharmacy\pharmacy\obj\Debug\pharmacy.csproj.CoreCompileInputs.cache
+C:\Users\sanja\OneDrive\Desktop\pharmacy\pharmacy\obj\Debug\pharmacy.exe
+C:\Users\sanja\OneDrive\Desktop\pharmacy\pharmacy\obj\Debug\pharmacy.pdb
